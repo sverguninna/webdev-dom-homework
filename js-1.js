@@ -10,4 +10,4 @@ function todayDate(NowDate) {
 
    console.log(MyDate, MyTime);
 }
-console.log(todayDate(NowDate ) );
+
