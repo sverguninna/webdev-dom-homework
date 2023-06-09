@@ -79,8 +79,8 @@
           </div>
           <div class="comment-footer">
             <div class="likes">
-              <span class="likes-counter">${comment.like} </span>
-              <button class="like-button"  data-color="red" ></button>
+              <span class="likes-counter" >${comment.like} </span>
+              <button class="like-button" data-counter= '0' ></button>
             </div>
           </div>
         </li>`
@@ -95,7 +95,9 @@
         for (const likeButtonElement of likesButtonElements) {
           likeButtonElement.addEventListener('click', () => {
             likeButtonElement.classList.add('color-bog')
-           comment.like +=1
+            let counter = comments[2].like =
+            likeButtonElement.dataset.counter+=1
+            
           })
         }
        }  
