@@ -55,18 +55,20 @@
           name: 'Глеб Фокин',
           data: '12.02.22 12:18',
           comment: ' Это будет первый комментарий на этой странице',
-          like :'3',
+          like :3,
+          isLiked: false
         },
         {
           name: 'Варвара Н.',
           data: '13.02.22 19:22',
           comment: ' Мне нравится как оформлена эта страница! ❤',
-          like :'75', 
+          like :75, 
+          isLiked: false
         }
       ]
 
      const  renderCommentsList = ()=> {
-     const commentHTML =  comments.map((comment)=>{
+     const commentHTML =  comments.map((comment, index)=>{
        return ` <li  class="comment">
           <div class="comment-header">
             <div>${comment.name} </div>
@@ -80,7 +82,7 @@
           <div class="comment-footer">
             <div class="likes">
               <span class="likes-counter" >${comment.like} </span>
-              <button class="like-button" data-counter= '0' ></button>
+              <button class="like-button " ${comment.isLiked? '-active-like  ' : '' } data-index = ${index} ></button>
             </div>
           </div>
         </li>`
@@ -94,9 +96,14 @@
       const likesButtonElements  = document.querySelectorAll('.like-button')
         for (const likeButtonElement of likesButtonElements) {
           likeButtonElement.addEventListener('click', () => {
-            likeButtonElement.classList.add('color-bog')
-            let counter = comments[2].like =
-            likeButtonElement.dataset.counter+=1
+            const comment = comments[index]; 
+            console.log(likeButtonElement.dataset.index);
+            if (comment.isLiked === false && likeButtonElement.dataset.index ) {
+              comment.isLiked=true
+              comment.like +=1
+            } else {
+              
+            }
             
           })
         }
