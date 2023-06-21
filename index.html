@@ -66,6 +66,26 @@
           isLiked: false
         }
       ]
+      const addLikesButtonElements = ( ) => {
+      const likesButtonElements  = document.querySelectorAll('.like-button')
+        for (const likeButtonElement of likesButtonElements) {
+          likeButtonElement.addEventListener('click', () => {
+            const indexOfComment= likeButtonElement.dataset.index;
+            const comment = comments[indexOfComment]; 
+            console.log(indexOfComment);
+            if (comment.isLiked === false  ) {
+              comment.isLiked=true
+              comment.like +=1
+            } else if (comment.isLiked === true ){ 
+              comment.like -=1
+              comment.isLiked=false
+            }
+            renderCommentsList()
+          })
+        }
+       }  
+                
+
 
      const  renderCommentsList = ()=> {
      const commentHTML =  comments.map((comment, index)=>{
@@ -91,24 +111,9 @@
      sheet.innerHTML = commentHTML
      }
     renderCommentsList()
+    addLikesButtonElements()
 
-    const addLikesButtonElements = ( ) => {
-      const likesButtonElements  = document.querySelectorAll('.like-button')
-        for (const likeButtonElement of likesButtonElements) {
-          likeButtonElement.addEventListener('click', () => {
-            const comment = comments[index]; 
-            console.log(likeButtonElement.dataset.index);
-            if (comment.isLiked === false && likeButtonElement.dataset.index ) {
-              comment.isLiked=true
-              comment.like +=1
-            } else {
-              
-            }
-            
-          })
-        }
-       }  
-         
+  
 
       const innerEverListeners = () =>{
          const comments=  document.querySelectorAll('.comment')
